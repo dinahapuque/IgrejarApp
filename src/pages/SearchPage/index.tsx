@@ -1,12 +1,12 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, View, Dimensions, Text } from 'react-native';
+import { SafeAreaView, StatusBar, Dimensions, View } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 import SearchBar from './components/SearchBar';
-import light from '../../shared/theme/light';
 import { BottomBar } from '../../shared/components/BottomBar';
 import { styles } from './components/SearchBar/styles';
 import churches, { ChurchType } from '../../data/churches';
+import ChurchCard from './components/ChurchCard';
 
 function SearchPage() {
   const [selectedChurch, setSelectedChurch] = React.useState<
@@ -54,46 +54,16 @@ function SearchPage() {
         ))}
       </MapView>
 
-      {selectedChurch && (
-        <View
-          style={{
-            position: 'absolute',
-            bottom: 0,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 1)',
-              width: Dimensions.get('window').width - 32,
-              flex: 1,
-              paddingVertical: 10,
-              paddingHorizontal: 16,
-              margin: 16,
-              justifyContent: 'space-between',
-              borderRadius: 16,
-            }}
-          >
-            <View style={{ flexDirection: 'row' }}>
-              <Text
-                style={{
-                  color: light.secondary.darkGrey,
-                  fontFamily: 'Inter-Regular',
-                  fontWeight: '600',
-                }}
-              >
-                Em evento
-              </Text>
-              <Text> Agora</Text>
-            </View>
-            <Text>{selectedChurch.name}</Text>
-            <Text>
-              {selectedChurch.address}, {selectedChurch.city} -{' '}
-              {selectedChurch.state}, {selectedChurch.zipCode}
-            </Text>
-          </View>
-          <BottomBar />
-        </View>
-      )}
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 0,
+        }}
+      >
+        {selectedChurch && <ChurchCard church={selectedChurch} />}
+
+        <BottomBar />
+      </View>
     </SafeAreaView>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchPage from './src/pages/SearchPage';
+import { Navigation } from './src/routes';
 
 function App() {
-  return <SearchPage />;
+  return <Navigation />;
 }
 
 export default App;

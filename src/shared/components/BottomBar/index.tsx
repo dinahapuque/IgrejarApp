@@ -26,6 +26,12 @@ export function BottomBar() {
     return selectedTab === bottomBarOption ? 3 : 1.5;
   }
 
+  function getLabelStyle(bottomBarOption: BottomBarOption) {
+    return selectedTab === bottomBarOption
+      ? bottomBarStyle.itemLabelSelected
+      : bottomBarStyle.itemLabel;
+  }
+
   return (
     <View key={'bottom-bar'} style={bottomBarStyle.view}>
       <TouchableNativeFeedback
@@ -37,7 +43,7 @@ export function BottomBar() {
             stroke={getStroke(BottomBarOption.SearchPage)}
             strokeWidth={getStrokeWidth(BottomBarOption.SearchPage)}
           />
-          <Text style={bottomBarStyle.itemLabel}>Buscar</Text>
+          <Text style={getLabelStyle(BottomBarOption.SearchPage)}>Buscar</Text>
         </View>
       </TouchableNativeFeedback>
 
@@ -50,7 +56,9 @@ export function BottomBar() {
             stroke={getStroke(BottomBarOption.DevotionalPage)}
             strokeWidth={getStrokeWidth(BottomBarOption.DevotionalPage)}
           />
-          <Text style={bottomBarStyle.itemLabel}>Devocional</Text>
+          <Text style={getLabelStyle(BottomBarOption.DevotionalPage)}>
+            Devocional
+          </Text>
         </View>
       </TouchableNativeFeedback>
 
@@ -63,7 +71,7 @@ export function BottomBar() {
             stroke={getStroke(BottomBarOption.SavedPage)}
             strokeWidth={getStrokeWidth(BottomBarOption.SavedPage)}
           />
-          <Text style={bottomBarStyle.itemLabel}>Salvos</Text>
+          <Text style={getLabelStyle(BottomBarOption.SavedPage)}>Salvos</Text>
         </View>
       </TouchableNativeFeedback>
     </View>

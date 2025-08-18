@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import light from '../../theme/light';
 
 const bottomBarStyle = StyleSheet.create({
   view: {
@@ -12,9 +13,18 @@ const bottomBarStyle = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 2,
   },
-  item: { justifyContent: 'center', alignItems: 'center' },
+  item: { justifyContent: 'center', alignItems: 'center', gap: 4 },
   itemLabel: {
     fontFamily: 'Inter-Regular',
+    color: light.neutral.mid,
+    fontWeight: '500',
+    fontSize: 12,
+  },
+  itemLabelSelected: {
+    fontFamily: 'Inter-Bold',
+    color: light.secondary.darkGrey,
+    fontWeight: '700',
+    fontSize: 12,
   },
 });
 

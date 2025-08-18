@@ -9,6 +9,7 @@ type ChurchType = {
   zipCode: string;
   latitude: number;
   longitude: number;
+  schedule: ScheduleType[];
   pastors: PastorType[];
   events?: EventType[];
 };
@@ -22,9 +23,20 @@ type PastorType = {
 
 type EventType = {
   id: string;
-  name: string;
+  title: string;
   description: string;
   datetime: Date; // ISO 8601 format
+};
+
+type ScheduleType = {
+  id: string;
+  day: string;
+  items: ScheduleItemType[];
+};
+
+type ScheduleItemType = {
+  hour: string;
+  description: string;
 };
 
 const churches = [
@@ -39,12 +51,62 @@ const churches = [
     zipCode: '59865-000',
     latitude: -5.985901,
     longitude: -37.8184881,
+    events: [
+      {
+        id: '1',
+        title: 'Congresso da família',
+        description: 'Um momento de oração e intercessão.',
+        datetime: new Date('2025-09-15T18:30:00'),
+      },
+      {
+        id: '2',
+        title: 'Culto de Natal',
+        description: 'Um momento de adoração e louvor.',
+        datetime: new Date('2025-12-17T19:00:00'),
+      },
+    ],
     pastors: [
       {
         id: '1',
         name: 'Lucas Moura',
         email: 'contatolucasmoura@hotmail.com',
         phone: '(84) 99822-5513',
+      },
+    ],
+    schedule: [
+      {
+        id: '1',
+        day: 'Quarta',
+        items: [
+          {
+            hour: '18:30',
+            description: 'Culto de oração',
+          },
+        ],
+      },
+      {
+        id: '2',
+        day: 'Sábado',
+        items: [
+          {
+            hour: '19:00',
+            description: 'Culto dos jovens',
+          },
+        ],
+      },
+      {
+        id: '3',
+        day: 'Domingo',
+        items: [
+          {
+            hour: '09:00',
+            description: 'Escola Bíblica Dominical',
+          },
+          {
+            hour: '19:00',
+            description: 'Culto de adoração',
+          },
+        ],
       },
     ],
   },
@@ -1299,4 +1361,4 @@ const churches = [
 ] as ChurchType[];
 
 export default churches;
-export type { ChurchType, PastorType };
+export type { ChurchType, PastorType, EventType, ScheduleType };
