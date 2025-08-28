@@ -149,7 +149,7 @@ function ChurchPage({ route }) {
             <View style={{ height: 24 }} />
 
             <View style={{ gap: 16 }}>
-              {church.schedule.map(item => (
+              {church.schedule?.map(item => (
                 <ScheduleItem key={item.id} schedule={item} />
               ))}
             </View>
@@ -174,7 +174,7 @@ function ChurchPage({ route }) {
             <View style={{ height: 24 }} />
 
             <View style={{ gap: 16 }}>
-              {church.pastors.map(pastor => (
+              {church.pastors?.map(pastor => (
                 <PastorItem key={pastor.id} pastor={pastor} />
               ))}
             </View>
@@ -197,7 +197,7 @@ function ChurchPage({ route }) {
             <View style={{ height: 24 }} />
 
             <View style={{ gap: 16 }}>
-              {church.events.map(event => (
+              {church.events?.map(event => (
                 <EventItem key={event.id} event={event} />
               ))}
             </View>

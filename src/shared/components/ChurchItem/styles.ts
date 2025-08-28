@@ -9,7 +9,7 @@ const bottomBarStyle = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 24,
     paddingHorizontal: 48,
-    paddingBottom: 30,
+    paddingBottom: 100,
     justifyContent: 'space-between',
     gap: 2,
   },

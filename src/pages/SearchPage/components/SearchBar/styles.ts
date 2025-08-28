@@ -4,6 +4,7 @@ import { typography } from '../../../../shared/typography';
 
 const styles = StyleSheet.create({
   default: {
+    flex: 1,
     backgroundColor: '#fff',
   },
   viewInput: {

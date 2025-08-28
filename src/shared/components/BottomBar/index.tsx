@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableNativeFeedback } from 'react-native';
 
 import BookOpenIcon from '../../svgs/BookOpenIcon';
@@ -6,15 +6,16 @@ import BookMarkCheckIcon from '../../svgs/BookMarkCheckIcon';
 import NavigationPointerIcon from '../../svgs/NavigationPointerIcon';
 import light from '../../theme/light';
 import { bottomBarStyle } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
-enum BottomBarOption {
+export enum BottomBarOption {
   SearchPage,
   DevotionalPage,
-  SavedPage,
+  FavoritePage,
 }
 
-export function BottomBar() {
-  const [selectedTab, setSelectedTab] = useState(BottomBarOption.SearchPage);
+export function BottomBar({ selectedTab }) {
+  const navigation = useNavigation();
 
   function getStroke(bottomBarOption: BottomBarOption) {
     return selectedTab === bottomBarOption
@@ -32,10 +33,26 @@ export function BottomBar() {
       : bottomBarStyle.itemLabel;
   }
 
+  function goTo(bottomBarOption: BottomBarOption) {
+    if (selectedTab !== bottomBarOption) {
+      switch (bottomBarOption) {
+        case BottomBarOption.SearchPage:
+          navigation.navigate('SearchPage');
+          break;
+        case BottomBarOption.DevotionalPage:
+          navigation.navigate('DevotionalPage');
+          break;
+        case BottomBarOption.FavoritePage:
+          navigation.navigate('FavoritePage');
+          break;
+      }
+    }
+  }
+
   return (
     <View key={'bottom-bar'} style={bottomBarStyle.view}>
       <TouchableNativeFeedback
-        onPress={() => setSelectedTab(BottomBarOption.SearchPage)}
+        onPress={() => goTo(BottomBarOption.SearchPage)}
         background={TouchableNativeFeedback.Ripple('#EEE', false)}
       >
         <View style={bottomBarStyle.item}>
@@ -48,7 +65,7 @@ export function BottomBar() {
       </TouchableNativeFeedback>
 
       <TouchableNativeFeedback
-        onPress={() => setSelectedTab(BottomBarOption.DevotionalPage)}
+        onPress={() => goTo(BottomBarOption.DevotionalPage)}
         background={TouchableNativeFeedback.Ripple('#EEE', false)}
       >
         <View style={bottomBarStyle.item}>
@@ -63,15 +80,17 @@ export function BottomBar() {
       </TouchableNativeFeedback>
 
       <TouchableNativeFeedback
-        onPress={() => setSelectedTab(BottomBarOption.SavedPage)}
+        onPress={() => goTo(BottomBarOption.FavoritePage)}
         background={TouchableNativeFeedback.Ripple('#EEE', false)}
       >
         <View style={bottomBarStyle.item}>
           <BookMarkCheckIcon
-            stroke={getStroke(BottomBarOption.SavedPage)}
-            strokeWidth={getStrokeWidth(BottomBarOption.SavedPage)}
+            stroke={getStroke(BottomBarOption.FavoritePage)}
+            strokeWidth={getStrokeWidth(BottomBarOption.FavoritePage)}
           />
-          <Text style={getLabelStyle(BottomBarOption.SavedPage)}>Salvos</Text>
+          <Text style={getLabelStyle(BottomBarOption.FavoritePage)}>
+            Salvos
+          </Text>
         </View>
       </TouchableNativeFeedback>
     </View>

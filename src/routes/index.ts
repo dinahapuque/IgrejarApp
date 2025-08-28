@@ -1,8 +1,10 @@
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import SearchPage from '../pages/SearchPage';
 import ChurchPage from '../pages/ChurchPage';
+import SearchPage from '../pages/SearchPage';
+import FavoritePage from '../pages/FavoritePage';
+import DevotionalPage from '../pages/DevotionalPage';
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'SearchPage',
@@ -12,8 +14,28 @@ const RootStack = createNativeStackNavigator({
   screens: {
     SearchPage: {
       screen: SearchPage,
+      options: {
+        animation: 'fade',
+      },
     },
-    ChurchPage,
+    DevotionalPage: {
+      screen: DevotionalPage,
+      options: {
+        animation: 'fade',
+      },
+    },
+    FavoritePage: {
+      screen: FavoritePage,
+      options: {
+        animation: 'fade',
+      },
+    },
+    ChurchPage: {
+      screen: ChurchPage,
+      options: {
+        animation: 'slide_from_bottom',
+      },
+    },
   },
 });
 

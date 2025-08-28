@@ -7,9 +7,7 @@ import { styles } from './styles';
 import light from '../../../../shared/theme/light';
 import iconsImages from '../../../../../assets/icons/iconsImages';
 
-export default function SearchBar() {
-  const [number, setNumber] = React.useState('');
-
+export default function SearchBar({ searchText, setSearchText }) {
   return (
     <View style={styles.viewInput}>
       <Image
@@ -20,8 +18,8 @@ export default function SearchBar() {
       <TextInput
         style={styles.input}
         placeholderTextColor={light.neutral.black}
-        onChangeText={setNumber}
-        value={number}
+        onChangeText={setSearchText}
+        value={searchText}
         placeholder="Encontre uma igreja..."
       />
 

@@ -1,6 +1,7 @@
 const light = {
   primary: {
     lightGreen: '#5ED7AB',
+    mossGreen: '#172815',
   },
   secondary: {
     darkGrey: '#33603E',
